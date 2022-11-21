@@ -17,8 +17,8 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.php": "39e760381edbcf9f1b9d0663f6e9fa7c",
-"/": "39e760381edbcf9f1b9d0663f6e9fa7c",
+"index.html": "1f3144215f52eba0dc8fd8cf187020bb",
+"/": "1f3144215f52eba0dc8fd8cf187020bb",
 "main.dart.js": "d09b3cc360513cf53f807bf54ef4d52b",
 "manifest.json": "537d130be8989030c70b34224ae8ee39",
 "version.json": "68149b11c542ac0ff620661ba04f1db2"
@@ -28,7 +28,7 @@ const RESOURCES = {
 // start.
 const CORE = [
   "main.dart.js",
-"index.php",
+"index.html",
 "assets/AssetManifest.json",
 "assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
@@ -107,7 +107,7 @@ self.addEventListener("fetch", (event) => {
   }
   var origin = self.location.origin;
   var key = event.request.url.substring(origin.length + 1);
-  // Redirect URLs to the index.php
+  // Redirect URLs to the index.html
   if (key.indexOf('?v=') != -1) {
     key = key.split('?v=')[0];
   }
@@ -119,7 +119,7 @@ self.addEventListener("fetch", (event) => {
   if (!RESOURCES[key]) {
     return;
   }
-  // If the URL is the index.php, perform an online-first request.
+  // If the URL is the index.html, perform an online-first request.
   if (key == '/') {
     return onlineFirst(event);
   }
